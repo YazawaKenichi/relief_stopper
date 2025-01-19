@@ -4,6 +4,7 @@
     raw_cmd_vel_topic_name: "/raw_cmd_vel"
     bar_angle_topic_name: "/relief_detector/bar/normalized"
     relief_threshold: 100.0
+    reverse: true
     saving_raw_data_directory: "/home/yazawa/microros_ws/src/relief_stopper/logs/raw"
     saving_stopping_data_directory: "/home/yazawa/microros_ws/src/relief_stopper/logs/normalized"
 

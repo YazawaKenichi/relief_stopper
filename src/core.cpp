@@ -36,11 +36,13 @@ ReliefStopper::ReliefStopper()
     this->declare_parameter("raw_cmd_vel_topic_name", this->raw_cmd_vel_name_);
     this->declare_parameter("bar_angle_topic_name", this->bar_angle_name_);
     this->declare_parameter("relief_threshold", this->relief_threshold_);
+    this->declare_parameter("reverse", this->reverse_);
     //! 読み込み
     this->processed_cmd_vel_name_ = this->get_parameter("processed_cmd_vel_topic_name").as_string();
     this->raw_cmd_vel_name_ = this->get_parameter("raw_cmd_vel_topic_name").as_string();
     this->bar_angle_name_ = this->get_parameter("bar_angle_topic_name").as_string();
     this->relief_threshold_ = this->get_parameter("relief_threshold").as_double();
+    this->reverse_ = this->get_parameter("reverse").as_double();
 
     ////////// 記録 //////////
     //! ファイル記録用の処理
