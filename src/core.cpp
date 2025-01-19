@@ -77,6 +77,17 @@ ReliefStopper::ReliefStopper()
 
 void ReliefStopper::raw_cmd_vel_callback_(const geometry_msgs::msg::Twist & raw_cmd_vel)
 {
+    /*
+    this->cmd_vel_zeros_.linear.x = (this->stopping_ && (raw_cmd_vel.linear.x >= 0.0f) ? 0.0f : raw_cmd_vel.linear.x);
+    this->cmd_vel_zeros_.linear.y = raw_cmd_vel.linear.y;
+    this->cmd_vel_zeros_.linear.z = raw_cmd_vel.linear.z;
+    this->cmd_vel_zeros_.angular.x = raw_cmd_vel.angular.x;
+    this->cmd_vel_zeros_.angular.y = raw_cmd_vel.angular.y;
+    this->cmd_vel_zeros_.angular.z = raw_cmd_vel.angular.z;
+
+    this->processed_cmd_vel_publisher_->publish(raw_cmd_vel);
+    */
+
     if(this->stopping_)
     {
         this->processed_cmd_vel_publisher_->publish(this->cmd_vel_zeros_);
