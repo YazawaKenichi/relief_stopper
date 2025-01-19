@@ -1,7 +1,7 @@
 /**:
   ros__parameters:
     processed_cmd_vel_topic_name: "/cmd_vel"
-    raw_cmd_vel_topic_name: "/raw_cmd_vel"
+    raw_cmd_vel_topic_name: "/cmd_vel_raw"
     bar_angle_topic_name: "/relief_detector/bar/normalized"
     relief_threshold: 100.0
     reverse: true

@@ -42,7 +42,7 @@ ReliefStopper::ReliefStopper()
     this->raw_cmd_vel_name_ = this->get_parameter("raw_cmd_vel_topic_name").as_string();
     this->bar_angle_name_ = this->get_parameter("bar_angle_topic_name").as_string();
     this->relief_threshold_ = this->get_parameter("relief_threshold").as_double();
-    this->reverse_ = this->get_parameter("reverse").as_double();
+    this->reverse_ = this->get_parameter("reverse").as_bool();
 
     ////////// 記録 //////////
     //! ファイル記録用の処理
