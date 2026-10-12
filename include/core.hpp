@@ -6,7 +6,7 @@
 
 #include <iostream>
 #include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/float32.hpp"
+#include "std_msgs/msg/int64.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 
 #include "FileRW.hpp"
@@ -21,11 +21,11 @@ public:
 
 private:
     void raw_cmd_vel_callback_(const geometry_msgs::msg::Twist & raw_cmd_vel);
-    void bar_angle_callback_(const std_msgs::msg::Float32 & angle);
+    void bar_angle_callback_(const std_msgs::msg::Int64 & msg);
 
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr processed_cmd_vel_publisher_;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr raw_cmd_subscriber_;
-    rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr bar_angle_subscriber_;
+    rclcpp::Subscription<std_msgs::msg::Int64>::SharedPtr bar_angle_subscriber_;
     std::string processed_cmd_vel_name_;
     std::string raw_cmd_vel_name_;
     std::string bar_angle_name_;
