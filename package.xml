@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-    <name>chain_stopper</name>
+    <name>relief_stopper</name>
     <version>0.0.0</version>
-    <description>stopping navigation for chain_detector</description>
+    <description>stopping navigation for relief_detector</description>
     <maintainer email="s21c1036hn@gmail.com">YAZAWA Kenichi</maintainer>
     <license>MIT License</license>
 

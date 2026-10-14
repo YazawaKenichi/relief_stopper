@@ -5,14 +5,14 @@
 #include "FileRW.hpp"
 #include "TimeObserver.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/int64.hpp"
+#include "std_msgs/msg/float32.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 
 namespace ReliefStoppers
 {
 //! コンストラクタ
 ReliefStopper::ReliefStopper()
-    : Node("chain_stopper"),
+    : Node("relief_stopper"),
     processed_cmd_vel_name_("/cmd_vel"),
     raw_cmd_vel_name_("/cmd_vel_raw"),
     bar_angle_name_("/bar/angle"),
@@ -69,7 +69,7 @@ ReliefStopper::ReliefStopper()
             this->raw_cmd_vel_name_, 10, std::bind(
                 &ReliefStopper::raw_cmd_vel_callback_, this,
                 std::placeholders::_1));
-    this->bar_angle_subscriber_ = this->create_subscription<std_msgs::msg::Int64>(
+    this->bar_angle_subscriber_ = this->create_subscription<std_msgs::msg::Float32>(
             this->bar_angle_name_, 10, std::bind(
                 &ReliefStopper::bar_angle_callback_, this,
                 std::placeholders::_1));
@@ -99,10 +99,11 @@ void ReliefStopper::raw_cmd_vel_callback_(const geometry_msgs::msg::Twist & raw_
 }
 
 //! サブスクライブ コールバック
-void ReliefStopper::bar_angle_callback_(const std_msgs::msg::Int64 & msg)
+void ReliefStopper::bar_angle_callback_(const std_msgs::msg::Float32 & angle)
 {
-    this->stopping_ = static_cast<bool>(msg.data);
+    this->stopping_ = (!this->reverse_) ? (angle.data > this->relief_threshold_ ? true : false) : (angle.data > this->relief_threshold_ ? false : true);
 
+    RCLCPP_INFO(this->get_logger(), "    raw  : %8.3f", angle.data);
     RCLCPP_INFO(this->get_logger(), "stopping : %8d", this->stopping_ ? 1 : 0);
 }
 }

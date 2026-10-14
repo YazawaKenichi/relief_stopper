@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(chain_stopper)
+project(relief_stopper)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -18,7 +18,7 @@ ament_auto_add_library(${PROJECT_NAME} SHARED
     src/core.cpp)
 
 # 実行ファイル関係 add_executable
-ament_auto_add_executable(chain_stop
+ament_auto_add_executable(relief_stop
   src/core.cpp)
 
 if(BUILD_TESTING)

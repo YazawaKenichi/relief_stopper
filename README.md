@@ -1,9 +1,7 @@
-# chain_stopper
+# relief_stopper
 
-通常は cmd_vel をそのまま通す。
-特定のトピックに 1 が入ったら cmd_vel = 0 にする。
-
-（ relief_stopper を改造したもので、残骸がかなり残ってる ）
+<!--正規化された棒の角度の値を取得して、基準値と比較して特定のライフサイクルを一時停止-->
+棒の角度の値を取得し、基準値と比較して、段差と判定したら /cmd_vel をゼロにして次段に渡す
 
 ## Overview
 
@@ -16,12 +14,12 @@
 1. ワークスペースにこのパッケージをクローン
     ``` cmd
     cd ~/ros2_ws/src/
-    git clone https://github.com/yazawakenichi/chain_stopper
+    git clone https://github.com/yazawakenichi/relief_stopper
     ```
 2. パッケージのビルド
     ``` cmd
     cd ~/ros2_ws/
-    colcon build --packages-select chain_stopper
+    colcon build --packages-select relief_stopper
     ```
 3. 実行ファイルのオーバーレイ
     ``` cmd
@@ -34,7 +32,7 @@
 新しくターミナルを開いた場合、ノードを起動する前に `source install/local_setup.bash` することを忘れないでください。
 
 ``` cmd
-ros2 launch chain_stopper chain_stopper_launch.py
+ros2 launch relief_stopper relief_stopper_launch.py
 ```
 
 ## Package Description
@@ -49,7 +47,7 @@ ros2 launch chain_stopper chain_stopper_launch.py
 |---|---|---|---
 |`/sub_topic_name`|`std::string`|``|サブスクライブするトピック名前
 |`/stop_lifecycle_name`|`std::string`|``|一時停止するライフサイクル名
-|`/chain_threshold`|`double`|`1.0`|段差とする基準値
+|`/relief_threshold`|`double`|`1.0`|段差とする基準値
 
 ## License
 このソフトウェアは、MIT License の下、再頒布および使用が許可されます。
